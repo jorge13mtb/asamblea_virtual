@@ -1,2 +1,58 @@
-<h1>StaticPages#about</h1>
-<p>Find me in app/views/static_pages/about.html.erb</p>
+  <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
+      <div class="container">
+          <div class="navbar-header">
+              <ul class="nav navbar-nav navbar-left">
+                  <li><%= link_to "Asamblea", root_path %></li>
+              </ul>
+          </div>
+          <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                  <li><%= link_to "Ayuda", help_path %></li>
+                  <li class="active"><%= link_to "Quienes Somos?", about_path %></li>
+              </ul>
+          </div>
+      </div>
+    </header><!--/header-->
+
+<p>.</p>
+<p>.</p>
+
+<section id="about-us" class="container">
+ <div class="gap"></div>
+        <center><h1 class="center">Equipo de Desarrollo</h1></center>
+        <center><p class="lead center">Somos 3 estudiantes de la Escuela de Ingenieria en Computacion del Tecnologico de Costa Rica, y este proyecto fue
+                                          desarrollado para el curso de Desarrollo de Aplicaciones Moviles el segundo semestre del año 2014</p>
+        </center>
+        <div class="gap"></div>
+
+        <div id="meet-the-team" class="row">
+            <div class="col-md-4 col-xs-6">
+                <div class="center">
+                    <center> <p><img class="img-responsive img-thumbnail img-circle" src="https://cdn1.iconfinder.com/data/icons/BRILLIANT/accounting/png/256/executive.png" alt="" ></p>
+                    <h5>Diego Carmona Salazar</h5>
+                    <h5><small class="designation muted">Desarrollador</small></h5>
+                    <p>Estudiante de Ingenieria en Computacion del Tecnologico de Costa Rica</p> </center>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xs-6">
+                <div class="center">
+                    <center> <p><img class="img-responsive img-thumbnail img-circle" src="https://cdn1.iconfinder.com/data/icons/BRILLIANT/accounting/png/256/executive.png" alt="" ></p>
+                    <h5>Jorge Chavarria Rodriguez</h5>
+                    <h5><small class="designation muted">Desarrollador</small></h5>
+                    <p>Estudiante de Ingenieria en Computacion del Tecnologico de Costa Rica</p> </center>
+                </div>
+            </div>        
+
+            <div class="col-md-4 col-xs-6">
+                <div class="center">
+                    <center> <p><img class="img-responsive img-thumbnail img-circle" src="https://cdn1.iconfinder.com/data/icons/BRILLIANT/accounting/png/256/executive.png" alt="" ></p>
+                    <h5>Bryan Muñoz Villalobos</h5>
+                    <h5><small class="designation muted">Desarrollador</small></h5>
+                    <p>Estudiante de Ingenieria en Computacion del Tecnologico de Costa Rica</p> </center>
+                </div>
+            </div>        
+        </div><!--/#meet-the-team-->
+    </section><!--/#about-us-->
+
+
