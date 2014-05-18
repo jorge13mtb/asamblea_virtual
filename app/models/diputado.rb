@@ -1,5 +1,5 @@
 class Diputado < ActiveRecord::Base
-  has_many :preguntas_diputados
+  has_many :preguntas_diputados, dependent: :destroy
   before_save { self.email = email.downcase }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

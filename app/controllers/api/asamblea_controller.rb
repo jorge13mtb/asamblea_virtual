@@ -46,6 +46,11 @@ class Api::AsambleaController < ApplicationController
     end
   end
 
+  
+  def preguntas
+   @preguntas = PreguntasDiputado.all
+  end
+
 end
 
 
