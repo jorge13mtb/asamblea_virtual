@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140518141829) do
+ActiveRecord::Schema.define(version: 20140518150101) do
 
   create_table "diputados", force: true do |t|
     t.string   "nombre"
@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(version: 20140518141829) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
+    t.string   "token_app_movil"
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true
+  add_index "usuarios", ["token_app_movil"], name: "index_usuarios_on_token_app_movil"
 
 end
