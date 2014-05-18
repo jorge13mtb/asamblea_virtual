@@ -32,6 +32,20 @@ class Api::AsambleaController < ApplicationController
     @mensaje.respuesta = usuario.token_app_movil if usuario && usuario.token_app_movil != nil
   end
 
+
+  def nueva_pregunta
+    @mensaje = Mensaje.new 
+    @mensaje.respuesta = "No se agrego la pregunta"
+
+    usuario = Usuario.find_by token_app_movil: params[:token]
+    diputado = Diputado.find_by email: params[:email_diputado]
+
+    if diputado && usuario
+      pregunta = diputado.preguntas_diputados.build(pregunta: params[:pregunta], usuario_id: usuario.id)
+      @mensaje.respuesta = "Pregunta agregada correctamente" if pregunta.save 
+    end
+  end
+
 end
 
 
