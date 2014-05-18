@@ -1,1 +1,1 @@
-json.extract! @diputado, :id, :created_at, :updated_at
+json.extract! @diputado, :id, :nombre, :email, :descripcion, :created_at, :updated_at
