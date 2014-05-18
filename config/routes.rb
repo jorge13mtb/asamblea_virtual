@@ -1,7 +1,7 @@
 AsambleaVirtual::Application.routes.draw do
   root  'sesiones#new' 
 
-  resources :diputados
+  resources :diputados, only: [:show, :edit]
   resources :sesiones, only: [:new, :create, :destroy]
 
   match '/help',    to: 'static_pages#help',    via: 'get'

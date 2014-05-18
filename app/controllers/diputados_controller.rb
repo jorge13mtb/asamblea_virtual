@@ -2,20 +2,17 @@ class DiputadosController < ApplicationController
   before_action :set_diputado, only: [:show, :edit, :update, :destroy]
   before_action :signed_in_user, only: [:edit, :update, :show, :index]  
 
-  def index
-    @diputados = Diputado.all
-  end
 
   def show
     @diputado = Diputado.find(params[:id])
   end
 
-  def new
-    @diputado = Diputado.new
-  end
-
   def edit
   end
+
+  def update
+    @diputado.update(diputado_params)
+  end  
 
   def create
     @diputado = Diputado.new(diputado_params)
@@ -40,5 +37,9 @@ class DiputadosController < ApplicationController
 
     def signed_in_user
       redirect_to root_url, notice: "Please sign in." unless signed_in?
+    end
+
+    def diputado_params
+      params.require(:diputado).permit(:email, :descripcion, :password, :password_confirmation)
     end
 end

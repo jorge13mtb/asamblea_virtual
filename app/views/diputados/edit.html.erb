@@ -2,14 +2,16 @@
       <div class="container">
           <div class="navbar-header">
               <ul class="nav navbar-nav navbar-left">
-                  <li class="active"><%= link_to @diputado.nombre, diputado_path(@diputado) %></li>
+                  <li><%= link_to current_diputado.nombre, diputado_path(current_diputado) %></li>
               </ul>
           </div>
           <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav navbar-right">
                   <li><%= link_to "Ayuda", help_path %></li>
                   <li><%= link_to "Quienes Somos?", about_path %></li>
-                  <li><%= link_to "Cerrar Sesion", about_path %></li>
+                  <% if !current_diputado.nil? %>
+                     <li><%= link_to "Cerrar Sesion", signout_path, method: "delete" %></li>
+                  <% end %>
               </ul>
           </div>
       </div>
@@ -22,5 +24,4 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @diputado %> |
-<%= link_to 'Back', diputados_path %>
+<li><%= link_to current_diputado.nombre, diputado_path(current_diputado) %></li>

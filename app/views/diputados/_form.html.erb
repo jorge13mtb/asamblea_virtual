@@ -18,6 +18,17 @@
       <%= f.label :descripcion %><br>
       <%= f.text_field :descripcion %>
     </p>
+
+    <p>
+      <%= f.label :password, "Contraseña" %><br>
+      <%= f.password_field :password %>
+    </p>
+
+    <p>
+      <%= f.label :password_confirmation, "Confirmar Contraseña" %><br>
+      <%= f.password_field :password_confirmation %>
+    </p>
+
     <%= f.submit %>
   </div>
 <% end %>
