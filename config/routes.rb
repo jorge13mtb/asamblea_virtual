@@ -7,7 +7,8 @@ AsambleaVirtual::Application.routes.draw do
 
 
   match '/api/asamblea/diputados',       to: 'api/asamblea#diputados',          via: 'get'
-  match '/api/asamblea/crear_usuario',   to: 'api/asamblea#crear_usuario',          via: 'get'
+  match '/api/asamblea/crear_usuario',   to: 'api/asamblea#crear_usuario',      via: 'get'
+  match '/api/asamblea/log_in',          to: 'api/asamblea#log_in',             via: 'get'
 
 
   match '/help',    to: 'static_pages#help',    via: 'get'

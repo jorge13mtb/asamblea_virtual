@@ -11,4 +11,13 @@ class Usuario < ActiveRecord::Base
 
   has_secure_password
   validates :password, length: { minimum: 6 }
+
+
+  def Usuario.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def Usuario.hash(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
 end
