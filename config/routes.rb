@@ -6,7 +6,8 @@ AsambleaVirtual::Application.routes.draw do
   resources :sesiones, only: [:new, :create, :destroy]
 
 
-  match '/api/asamblea/diputados', to: 'api/asamblea#diputados',          via: 'get'
+  match '/api/asamblea/diputados',       to: 'api/asamblea#diputados',          via: 'get'
+  match '/api/asamblea/crear_usuario',   to: 'api/asamblea#crear_usuario',          via: 'get'
 
 
   match '/help',    to: 'static_pages#help',    via: 'get'
