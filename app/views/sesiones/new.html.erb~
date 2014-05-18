@@ -20,6 +20,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><%= link_to "Ayuda", help_path %></li>
                     <li><%= link_to "Quienes Somos?", about_path %></li>
+
+                    <% if !current_diputado.nil? %>
+                       <li><%= link_to "Cerrar Sesion", signout_path, method: "delete" %></li>
+                    <% end %>
                 </ul>
             </div>
         </div>
@@ -28,32 +32,41 @@
 <p>.</p>
 
 
-
 <section id="sign_in" class="container">
  <div class="gap"></div>
         <center><h1 class="center">Asamblea Virtual</h1></center>
         <center><p class="lead center">Este es un proyecto con el fin de lograr un acercamiento entre los diputados y los ciudadanos de Costa Rica</p>
 
-        <div class="row">
-          <div class="span6 offset3">
-            <%= form_for(:session, url: sesiones_path) do |f| %>
+        <% if current_diputado.nil? %>
+          <p class="lead center">Iniciar Sesion</p>
+          <div class="row">
+            <div class="span6 offset3">
+              <%= form_for(:session, url: sesiones_path) do |f| %>
 
-              <p>
-                <%= f.label :email %><br>
-                <%= f.text_field :email %>
-              </p>
+                <p>
+                  <%= f.label :email %><br>
+                  <%= f.text_field :email %>
+                </p>
 
-              <p>
-                <%= f.label :password %><br>
-                <%= f.password_field :password %>
-              </p>
+                <p>
+                  <%= f.label :password %><br>
+                  <%= f.password_field :password %>
+                </p>
 
-         
-              <p> <%= f.submit "Sign in", class: "btn btn-large btn-primary" %> </p>
-            <% end %>
-
+           
+                <p> <%= f.submit "Sign in", class: "btn btn-large btn-primary" %> </p>
+              <% end %>
+            </div>
           </div>
-        </div>
-        </center>
+      <% end %>
 
+          <% if !current_diputado.nil? %>
+             <p><%= link_to 'Mi Perfil', diputado_path(current_diputado) %></p>
+          <% end %>
+
+        </center>
 </section>
+
+
+
+
