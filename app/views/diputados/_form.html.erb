@@ -1,0 +1,23 @@
+<%= form_for(@diputado) do |f| %>
+  <% if @diputado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@diputado.errors.count, "error") %> prohibited this diputado from being saved:</h2>
+
+      <ul>
+      <% @diputado.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="actions">
+
+    <p>
+      <%= f.label :descripcion %><br>
+      <%= f.text_field :descripcion %>
+    </p>
+    <%= f.submit %>
+  </div>
+<% end %>

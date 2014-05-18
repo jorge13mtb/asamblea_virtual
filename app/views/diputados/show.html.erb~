@@ -1,0 +1,4 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Edit', edit_diputado_path(@diputado) %> |
+<%= link_to 'Back', diputados_path %>

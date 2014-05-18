@@ -1,11 +1,13 @@
 AsambleaVirtual::Application.routes.draw do
-  get "diputados/new"
   root  'sesiones#new' 
 
+  resources :diputados
   resources :sesiones, only: [:new, :create, :destroy]
 
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
+  match '/signout', to: 'sesiones#destroy',     via: 'delete'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,25 @@
+<h1>Listing diputados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @diputados.each do |diputado| %>
+      <tr>
+        <td><%= link_to 'Show', diputado %></td>
+        <td><%= link_to 'Edit', edit_diputado_path(diputado) %></td>
+        <td><%= link_to 'Destroy', diputado, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Diputado', new_diputado_path %>
