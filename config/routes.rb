@@ -1,8 +1,13 @@
 AsambleaVirtual::Application.routes.draw do
+  get "asamblea/new"
   root  'sesiones#new' 
 
   resources :diputados, only: [:show]
   resources :sesiones, only: [:new, :create, :destroy]
+
+
+  match '/api/asamblea/diputados', to: 'api/asamblea#diputados',          via: 'get'
+
 
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
