@@ -1,4 +1,4 @@
-<%= form_for(@diputado) method: :post do |f| %>
+<%= form_for(@diputado) do |f| %>
   <% if @diputado.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@diputado.errors.count, "error") %> prohibited this diputado from being saved:</h2>
