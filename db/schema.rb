@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140518015005) do
+ActiveRecord::Schema.define(version: 20140518044320) do
 
   create_table "diputados", force: true do |t|
     t.string   "nombre"
@@ -25,5 +25,15 @@ ActiveRecord::Schema.define(version: 20140518015005) do
 
   add_index "diputados", ["email"], name: "index_diputados_on_email", unique: true
   add_index "diputados", ["remember_token"], name: "index_diputados_on_remember_token"
+
+  create_table "preguntas_diputados", force: true do |t|
+    t.text     "pregunta"
+    t.text     "respuesta"
+    t.integer  "diputado_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "preguntas_diputados", ["diputado_id", "created_at"], name: "index_preguntas_diputados_on_diputado_id_and_created_at"
 
 end

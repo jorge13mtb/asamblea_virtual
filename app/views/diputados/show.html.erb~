@@ -1,4 +1,26 @@
-<p id="notice"><%= notice %></p>
+  <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
+      <div class="container">
+          <div class="navbar-header">
+              <ul class="nav navbar-nav navbar-left">
+                  <li class="active"><%= link_to @diputado.nombre, diputado_path(@diputado) %></li>
+              </ul>
+          </div>
+          <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                  <li><%= link_to "Ayuda", help_path %></li>
+                  <li><%= link_to "Quienes Somos?", about_path %></li>
+                  <li><%= link_to "Cerrar Sesion", signout_path, method: "delete" %></li>
+              </ul>
+          </div>
+      </div>
+    </header><!--/header-->
 
-<%= link_to 'Edit', edit_diputado_path(@diputado) %> |
-<%= link_to 'Back', diputados_path %>
+
+<p>.</p>
+<p>.</p>
+
+
+
+            <p>Nombre de Usuario: <%=@diputado.nombre%></p>
+            <p>Email: <%=@diputado.email%></p>
+<p>Descripcion: <%=@diputado.descripcion%></p>
