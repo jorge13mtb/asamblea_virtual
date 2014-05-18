@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140518044320) do
+ActiveRecord::Schema.define(version: 20140518141125) do
 
   create_table "diputados", force: true do |t|
     t.string   "nombre"
@@ -35,5 +35,12 @@ ActiveRecord::Schema.define(version: 20140518044320) do
   end
 
   add_index "preguntas_diputados", ["diputado_id", "created_at"], name: "index_preguntas_diputados_on_diputado_id_and_created_at"
+
+  create_table "usuarios", force: true do |t|
+    t.string   "nombre"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
