@@ -46,18 +46,14 @@
                       <td>
                           <%= pregunta.pregunta %>
                           <small style="color:blue"> Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %> </small> </br> </br>
-                          
                           <textarea class="form-control" cols=70 rows=3>Id de la pregunta: <%= pregunta.id %></textarea>  </br>
-
-
                       </td>
 
-
-                     <td></br> </br></br>
+                      <td></br> </br></br>
                         <center> 
                           <button type="button" class="btn btn-large btn-primary">Responder</button> </br>
                         </center>
-                     </td>
+                      </td>
                    </tr>
 
                 <%end %>
