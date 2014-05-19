@@ -16,7 +16,7 @@
                   <% if !current_diputado.nil? %>
                      <li><%= link_to current_diputado.nombre, diputado_path(current_diputado) %></li>
                   <% else %>
-                    <li><%= link_to "Asamblea", root_path %></li>
+                    <li class="active"><%= link_to "Asamblea", root_path %></li>
                    <% end %>
 
                 </ul>
@@ -71,6 +71,5 @@
 
         </center>
 </section>
-
 
 

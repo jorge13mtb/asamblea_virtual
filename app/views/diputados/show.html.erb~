@@ -27,7 +27,7 @@
             <p>Descripcion: <%=@diputado.descripcion%></p> -->
 
 <section id="help" class="container">
-        <div class="panel panel-success">
+        <div class="panel panel-primary">
 
           <div class="panel-heading">
             <h3 class="panel-title">Las preguntas que me han hecho (<%= @preguntas.count %>)</h3>
@@ -35,24 +35,24 @@
 				
           <div class="panel-body">
 				
-            <div align="center" style="height: 405px; overflow: auto;">
+            <div align="center" style="height: 430px; overflow: auto;">
 					
               <table class="table table-striped">
-                <tr>		
-                  <th>Nombre</th>
-                  <th>Respuesta</th>
-                  <th>Responder</th>
-                </tr>
-
+      
                 <% if @diputado.preguntas_diputados.any? %>
                 <% @preguntas.each do |pregunta| %>
 
                     <tr>
-                      <td><%= pregunta.pregunta %></td>
-                      <td><%= pregunta.respuesta %></td>
-                         
                       <td>
-                        <span class="glyphicon glyphicon-pencil"></span>
+                          <%= pregunta.pregunta %>
+                          <small style="color:blue"> Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %> </small> </br> </br>
+                          <textarea class="form-control" cols=70 rows=3>Id de la pregunta: <%= pregunta.id %></textarea>  </br>
+                      </td>
+
+                      <td></br> </br></br>
+                        <center> 
+                          <button type="button" class="btn btn-large btn-primary">Responder</button> </br>
+                        </center>
                       </td>
                    </tr>
 
@@ -65,5 +65,3 @@
       <% end %>
 
 </section>
-
-
