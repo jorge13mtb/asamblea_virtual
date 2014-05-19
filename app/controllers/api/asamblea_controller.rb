@@ -48,7 +48,17 @@ class Api::AsambleaController < ApplicationController
 
   
   def preguntas
-   @preguntas = PreguntasDiputado.all
+    @preguntas = Array.new
+    usuario = Usuario.find_by token_app_movil: params[:token]
+    @preguntass = PreguntasDiputado.all
+  
+    if usuario 
+      @preguntass.each do |pregunta|
+        if usuario.id == pregunta.usuario_id
+          @preguntas.push(pregunta)
+        end
+      end
+    end
   end
 
 end
