@@ -33,43 +33,56 @@
             </div>
         </div>
     </header><!--/header-->
-<p>.</p>
-<p>.</p>
-
+</br>
+</br>
+</br>
+</br>
 
 <section id="sign_in" class="container">
  <div class="gap"></div>
         <center><h1 class="center">Asamblea Virtual</h1></center>
-        <center><p class="lead center">Este es un proyecto con el fin de lograr un acercamiento entre los diputados y los ciudadanos de Costa Rica</p>
+        <center><p class="lead center">Este es un proyecto con el fin de lograr un acercamiento entre los diputados y los ciudadanos de Costa Rica</p> </br></br>
 
-        <% if current_diputado.nil? %>
-          <p class="lead center">Iniciar Sesion</p>
-          <div class="row">
-            <div class="span6 offset3">
-              <%= form_for(:session, url: sesiones_path) do |f| %>
 
-                <p>
-                  <%= f.label :email %><br>
-                  <%= f.text_field :email %>
-                </p>
+        <div class="col-md-4 col-md-offset-4">
+          <div class="well well-lg">
 
-                <p>
-                  <%= f.label :password %><br>
-                  <%= f.password_field :password %>
-                </p>
 
-           
-                <p> <%= f.submit "Sign in", class: "btn btn-large btn-primary" %> </p>
-              <% end %>
-            </div>
-          </div>
-      <% end %>
+            <% if current_diputado.nil? %> 
+              <p class="lead center">Iniciar Sesion</p>
+              <div class="row">
+                <div class="span6 offset3">
+                  <%= form_for(:session, url: sesiones_path) do |f| %>
+
+                    <p>
+                      <%= f.text_field :email, class: "form-control", placeholder: "Email"%>
+                    </p>
+
+                    <p>
+                      <%= f.password_field :password, class: "form-control", placeholder: "Contraseña" %>
+                    </p>
+
+                      </br>
+                    <p> <%= f.submit "Iniciar Sesion", class: "btn btn-large btn-primary" %> </p>
+                  <% end %>
+                </div>
+              </div>  
+          <% end %>
+
+        </div>
+      </div>
+
+
 
           <% if !current_diputado.nil? %>
              <p><%= link_to 'Mi Perfil', diputado_path(current_diputado) %></p>
           <% end %>
 
         </center>
+
+
 </section>
+
+
 
 
