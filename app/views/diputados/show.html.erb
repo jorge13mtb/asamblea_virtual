@@ -28,8 +28,8 @@
 
           <div class="panel-heading">
             <h3 class="panel-title">Las preguntas que me han hecho (<%= @preguntas.count %>)
-                  <%= link_to " Sin Responder ", diputado_path(@diputado)%>
-                  <%= link_to " Respondidas", "/diputados/" + @diputado.id.to_s + "?tab=respondidas" %>
+                  <%= link_to " Sin Responder ", diputado_path(@diputado), class: "btn btn-large btn-primary"%>
+                  <%= link_to " Respondidas", "/diputados/" + @diputado.id.to_s + "?tab=respondidas", class: "btn btn-large btn-primary"%>
             </h3>
           </div>
 				
@@ -72,8 +72,6 @@
   
                       <tr>
                         <td>        
-                         <%= form_tag('/responder?' +'id=' + @diputado.id.to_s + '&id_pregunta=' + pregunta.id.to_s) do  %>
-
                             <%= pregunta.pregunta %>
                             <small style="color:blue"> 
                               Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %>
@@ -83,12 +81,6 @@
                             <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control" %>
                         </td>
 
-                        <td></br> </br></br>
-                        <center>
-                          <%= submit_tag "Responder", class: "btn btn-large btn-primary" %>
-                          <% end %></br>
-                        </center>
-                       </td>
                      </tr>
                    <% end %>
 
