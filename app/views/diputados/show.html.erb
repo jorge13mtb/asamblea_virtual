@@ -20,16 +20,18 @@
 </br>
 </br>
 </br>
-</br>
 
 
 <section id="help" class="container">
         <div class="panel panel-primary">
 
           <div class="panel-heading">
-            <h3 class="panel-title">Las preguntas que me han hecho (<%= @preguntas.count %>)
-                  <%= link_to " Sin Responder ", diputado_path(@diputado), class: "btn btn-large btn-primary"%>
-                  <%= link_to " Respondidas", "/diputados/" + @diputado.id.to_s + "?tab=respondidas", class: "btn btn-large btn-primary"%>
+            <h3 class="panel-title">
+              <div class="btn-group">
+                  <%= link_to " Sin Responder ", diputado_path(@diputado), class: "btn btn-default"%>
+                  <%= link_to " Respondidas", "/diputados/" + @diputado.id.to_s + "?tab=respondidas", class: "btn btn-default"%>     
+              </div>
+                <text style="float: right; margin-top: 10px;">Total de Preguntas (<%= @preguntas.count %>)<text>
             </h3>
           </div>
 				
@@ -58,7 +60,7 @@
                             <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control" %>
                         </td>
 
-                        <td></br> </br></br>
+                        <td> </br></br></br>
                         <center>
                           <%= submit_tag "Responder", class: "btn btn-large btn-primary" %>
                           <% end %></br>
@@ -67,26 +69,20 @@
                      </tr>
                    <% end %>
    
+
                  <% else %>
                     <% if !pregunta.respuesta == "" or !pregunta.respuesta.nil? %>
-  
-                      <tr>
-                        <td>        
+                      <tr> <td>        
                             <%= pregunta.pregunta %>
-                            <small style="color:blue"> 
-                              Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %>
-                                                      - (<%=time_ago_in_words(pregunta.created_at)%> ago)
+                            <small style="color:blue"> Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %>
+                                                          - (<%=time_ago_in_words(pregunta.created_at)%> ago)
                             </small></br> </br>
-
                             <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control", disabled: true%>
-                        </td>
+                      </td> </tr>
+                    <% end %>
 
-                     </tr>
-                   <% end %>
 
                  <% end %>
-
-
                 <%end %>
 
               </table>
