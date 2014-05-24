@@ -43,17 +43,24 @@
                 <% @preguntas.each do |pregunta| %>
 
                     <tr>
-                      <td>
+                      <td>        
+                       <%= form_tag('/responder?' +'id=' + @diputado.id.to_s + '&id_pregunta=' + pregunta.id.to_s) do  %>
+
                           <%= pregunta.pregunta %>
-                          <small style="color:blue"> Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %> </small> </br> </br>
-                          <textarea class="form-control" cols=70 rows=3>Id de la pregunta: <%= pregunta.id %></textarea>  </br>
+                          <small style="color:blue"> 
+                            Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %>
+                                                    - (<%=time_ago_in_words(pregunta.created_at)%> ago)
+                          </small></br> </br>
+
+                          <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control" %>
                       </td>
 
                       <td></br> </br></br>
-                        <center> 
-                          <button type="button" class="btn btn-large btn-primary">Responder</button> </br>
-                        </center>
-                      </td>
+                      <center>
+                        <%= submit_tag "Responder", class: "btn btn-large btn-primary" %>
+                        <% end %></br>
+                      </center>
+                  </td>
                    </tr>
 
                 <%end %>

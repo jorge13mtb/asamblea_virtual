@@ -32,11 +32,10 @@ class DiputadosController < ApplicationController
   end
 
   def responder
+
     diputado = Diputado.find(params[:id])
-    pregunta = PreguntasDiputado.find(params[:id_pregunta])
-    pregunta.update_attribute :respuesta, params[:respuesta]
-    pregunta.save
     redirect_to diputado
+
   end
 
 
