@@ -6,6 +6,8 @@ class DiputadosController < ApplicationController
   def show
     @diputado = Diputado.find(params[:id])
     @preguntas = @diputado.preguntas_diputados
+    
+    @tab = params[:tab]
 
     #@diputado.preguntas_diputados.build(pregunta: "Esta es una pregunta de prueba")
   end

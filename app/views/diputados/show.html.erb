@@ -22,11 +22,15 @@
 </br>
 </br>
 
+
 <section id="help" class="container">
         <div class="panel panel-primary">
 
           <div class="panel-heading">
-            <h3 class="panel-title">Las preguntas que me han hecho (<%= @preguntas.count %>)</h3>
+            <h3 class="panel-title">Las preguntas que me han hecho (<%= @preguntas.count %>)
+                  <%= link_to " Sin Responder ", diputado_path(@diputado)%>
+                  <%= link_to " Respondidas", "/diputados/" + @diputado.id.to_s + "?tab=respondidas" %>
+            </h3>
           </div>
 				
           <div class="panel-body">
@@ -36,28 +40,60 @@
               <table class="table table-striped">
       
                 <% if @diputado.preguntas_diputados.any? %>
-                <% @preguntas.each do |pregunta| %>
+                <%  @preguntas.each do |pregunta| %>
 
-                    <tr>
-                      <td>        
-                       <%= form_tag('/responder?' +'id=' + @diputado.id.to_s + '&id_pregunta=' + pregunta.id.to_s) do  %>
+                   <% if @tab=="sin_responder" or @tab.nil? %>
+                    <% if pregunta.respuesta == "" or pregunta.respuesta.nil? %>
+  
+                      <tr>
+                        <td>        
+                         <%= form_tag('/responder?' +'id=' + @diputado.id.to_s + '&id_pregunta=' + pregunta.id.to_s) do  %>
 
-                          <%= pregunta.pregunta %>
-                          <small style="color:blue"> 
-                            Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %>
-                                                    - (<%=time_ago_in_words(pregunta.created_at)%> ago)
-                          </small></br> </br>
+                            <%= pregunta.pregunta %>
+                            <small style="color:blue"> 
+                              Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %>
+                                                      - (<%=time_ago_in_words(pregunta.created_at)%> ago)
+                            </small></br> </br>
 
-                          <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control" %>
-                      </td>
+                            <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control" %>
+                        </td>
 
-                      <td></br> </br></br>
-                      <center>
-                        <%= submit_tag "Responder", class: "btn btn-large btn-primary" %>
-                        <% end %></br>
-                      </center>
-                  </td>
-                   </tr>
+                        <td></br> </br></br>
+                        <center>
+                          <%= submit_tag "Responder", class: "btn btn-large btn-primary" %>
+                          <% end %></br>
+                        </center>
+                       </td>
+                     </tr>
+                   <% end %>
+   
+                 <% else %>
+                    <% if !pregunta.respuesta == "" or !pregunta.respuesta.nil? %>
+  
+                      <tr>
+                        <td>        
+                         <%= form_tag('/responder?' +'id=' + @diputado.id.to_s + '&id_pregunta=' + pregunta.id.to_s) do  %>
+
+                            <%= pregunta.pregunta %>
+                            <small style="color:blue"> 
+                              Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %>
+                                                      - (<%=time_ago_in_words(pregunta.created_at)%> ago)
+                            </small></br> </br>
+
+                            <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control" %>
+                        </td>
+
+                        <td></br> </br></br>
+                        <center>
+                          <%= submit_tag "Responder", class: "btn btn-large btn-primary" %>
+                          <% end %></br>
+                        </center>
+                       </td>
+                     </tr>
+                   <% end %>
+
+                 <% end %>
+
 
                 <%end %>
 
