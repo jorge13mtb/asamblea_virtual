@@ -78,7 +78,7 @@
                                                       - (<%=time_ago_in_words(pregunta.created_at)%> ago)
                             </small></br> </br>
 
-                            <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control" %>
+                            <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control", disabled: true%>
                         </td>
 
                      </tr>
