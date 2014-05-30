@@ -1,4 +1,4 @@
-json.array!(@centros) do |centro|
-  json.extract! centro, :nombre, :latitud, :longitud, :tipo, :horario, :descripcion
-  json.url centro_url(centro, format: :json)
+json.array!(@diputados) do |diputado|
+  json.extract! diputado, :nombre, :email, :descripcion
+  json.url diputado_url(diputado, format: :json)
 end
