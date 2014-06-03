@@ -6,11 +6,12 @@ AsambleaVirtual::Application.routes.draw do
   resources :sesiones, only: [:new, :create, :destroy]
 
 
-  match '/api/asamblea/diputados',       to: 'api/asamblea#diputados',         via: 'get'
-  match '/api/asamblea/crear_usuario',   to: 'api/asamblea#crear_usuario',     via: 'get'
-  match '/api/asamblea/log_in',          to: 'api/asamblea#log_in',            via: 'get'
-  match '/api/asamblea/nueva_pregunta',  to: 'api/asamblea#nueva_pregunta',    via: 'get'
-  match '/api/asamblea/preguntas',       to: 'api/asamblea#preguntas',         via: 'get'
+  match '/api/asamblea/diputados',           to: 'api/asamblea#diputados',         via: 'get'
+  match '/api/asamblea/crear_usuario',       to: 'api/asamblea#crear_usuario',     via: 'get'
+  match '/api/asamblea/log_in',              to: 'api/asamblea#log_in',            via: 'get'
+  match '/api/asamblea/nueva_pregunta',      to: 'api/asamblea#nueva_pregunta',    via: 'get'
+  match '/api/asamblea/preguntas',           to: 'api/asamblea#preguntas',         via: 'get'
+  match '/api/asamblea/preguntas_diputado',  to: 'api/asamblea#preguntas_diputado',         via: 'get'
   
   match '/responder', to: 'diputados#responder', via: 'post'
 

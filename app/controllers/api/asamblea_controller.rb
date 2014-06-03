@@ -7,6 +7,14 @@ class Api::AsambleaController < ApplicationController
   end
 
 
+
+  def preguntas_diputado
+    diputado = Diputado.find_by email: params[:email]
+    @preguntas = diputado.preguntas_diputados if diputado
+  end
+
+
+
   def crear_usuario
     @mensaje = Mensaje.new 
     @mensaje.respuesta = "No se pudo crear este usuario"
