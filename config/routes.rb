@@ -13,8 +13,9 @@ AsambleaVirtual::Application.routes.draw do
   match '/api/asamblea/preguntas',           to: 'api/asamblea#preguntas',           via: 'get'
   match '/api/asamblea/preguntas_diputado',  to: 'api/asamblea#preguntas_diputado',  via: 'get'
  
-  match '/api/asamblea/diputados_por_provincia',   to: 'api/asamblea#diputados_por_provincia',   via: 'get'
-  match '/api/asamblea/diputados_por_partido',     to: 'api/asamblea#diputados_por_partido',     via: 'get'
+  match '/api/asamblea/diputados_por_provincia',    to: 'api/asamblea#diputados_por_provincia',     via: 'get'
+  match '/api/asamblea/diputados_por_partido',      to: 'api/asamblea#diputados_por_partido',       via: 'get'
+  match '/api/asamblea/busqueda_diputados_nombre',  to: 'api/asamblea#busqueda_diputados_nombre',   via: 'get'
   
   match '/responder', to: 'diputados#responder', via: 'post'
 
