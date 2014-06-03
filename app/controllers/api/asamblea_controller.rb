@@ -8,6 +8,17 @@ class Api::AsambleaController < ApplicationController
 
 
 
+  def diputados_por_provincia
+    @total_diputados = Diputado.all
+    @diputados = Array.new
+
+    @total_diputados.each do |diputado|
+      @diputados.push(diputado) if diputado.Provincia == params[:provincia]
+    end
+  end
+
+
+
   def preguntas_diputado
     diputado = Diputado.find_by email: params[:email]
     @preguntas = diputado.preguntas_diputados if diputado
@@ -26,6 +37,7 @@ class Api::AsambleaController < ApplicationController
   end
 
 
+
   def log_in
     @mensaje = Mensaje.new 
     @mensaje.respuesta = ""
@@ -41,6 +53,7 @@ class Api::AsambleaController < ApplicationController
   end
 
 
+
   def nueva_pregunta
     @mensaje = Mensaje.new 
     @mensaje.respuesta = "No se agrego la pregunta"
@@ -53,6 +66,7 @@ class Api::AsambleaController < ApplicationController
       @mensaje.respuesta = "Pregunta agregada correctamente" if pregunta.save 
     end
   end
+
 
   
   def preguntas
