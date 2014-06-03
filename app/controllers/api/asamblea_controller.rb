@@ -1,9 +1,23 @@
 class Api::AsambleaController < ApplicationController
-  def new
-  end
 
   def diputados
     @diputados = Diputado.all
+  end
+
+
+
+  def crear_diputado
+    @mensaje = Mensaje.new 
+    @mensaje.respuesta = "No se pudo crear el diputado"
+
+    @diputado = Diputado.new(:nombre => params[:nombre], :email => params[:email], :password => params[:password],
+                             :password_confirmation => params[:password_confirmation], :UrlFoto => params[:url_foto],
+                             :descripcion => params[:descripcion], :Provincia => params[:provincia], :Partido => params[:partido],
+                             :cantidad_asistencias => params[:cantidad_asistencias], :cantidad_proyectos => params[:cantidad_proyectos],
+                             :texto_proyectos => params[:texto_proyectos], :texto_comisiones => params[:texto_comisiones],
+                             :sexo => params[:sexo])
+
+    @mensaje.respuesta = "Diputado creado" if @diputado.save
   end
 
 

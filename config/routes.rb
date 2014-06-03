@@ -16,6 +16,7 @@ AsambleaVirtual::Application.routes.draw do
   match '/api/asamblea/diputados_por_provincia',    to: 'api/asamblea#diputados_por_provincia',     via: 'get'
   match '/api/asamblea/diputados_por_partido',      to: 'api/asamblea#diputados_por_partido',       via: 'get'
   match '/api/asamblea/busqueda_diputados_nombre',  to: 'api/asamblea#busqueda_diputados_nombre',   via: 'get'
+  match '/api/asamblea/crear_diputado',             to: 'api/asamblea#crear_diputado',              via: 'get'
   
   match '/responder', to: 'diputados#responder', via: 'post'
 
