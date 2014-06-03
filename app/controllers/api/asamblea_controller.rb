@@ -19,6 +19,17 @@ class Api::AsambleaController < ApplicationController
 
 
 
+  def diputados_por_partido
+    @total_diputados = Diputado.all
+    @diputados = Array.new
+
+    @total_diputados.each do |diputado|
+      @diputados.push(diputado) if diputado.Partido == params[:partido]
+    end
+  end
+
+
+
   def preguntas_diputado
     diputado = Diputado.find_by email: params[:email]
     @preguntas = diputado.preguntas_diputados if diputado
