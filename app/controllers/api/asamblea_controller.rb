@@ -44,12 +44,19 @@ class Api::AsambleaController < ApplicationController
 
 
 
-  def busqueda_diputados_nombre
+  def busqueda_diputados
     @total_diputados = Diputado.all
     @diputados = Array.new
 
     @total_diputados.each do |diputado|
-      @diputados.push(diputado) if diputado.nombre.downcase.include? params[:nombre]
+
+      if diputado.nombre.downcase.include? params[:nombre].downcase 
+        if diputado.Provincia == params[:provincia]
+          if diputado.Partido ==  params[:partido]
+     	    @diputados.push(diputado) 
+	  end 
+        end
+      end
     end
   end
 
