@@ -8,16 +8,17 @@ class DiputadosController < ApplicationController
     @preguntas = @diputado.preguntas_diputados
     
     @tab = params[:tab]
-
-    #@diputado.preguntas_diputados.build(pregunta: "Esta es una pregunta de prueba")
   end
+
 
   def edit
   end
 
+
   def update
     @diputado.update(diputado_params)
   end  
+
 
   def create
     @diputado = Diputado.new(diputado_params)
@@ -32,6 +33,7 @@ class DiputadosController < ApplicationController
       end
     end
   end
+
 
   def responder
     diputado = Diputado.find(params[:id])

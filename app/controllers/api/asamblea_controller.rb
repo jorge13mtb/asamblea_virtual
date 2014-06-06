@@ -61,6 +61,36 @@ class Api::AsambleaController < ApplicationController
   end
 
 
+  
+  def busqueda_asistencias
+    @total_diputados = Diputado.all
+    @diputados = Array.new
+
+    if params[:sexo] == ""
+      @diputados = @total_diputados
+    else
+      @total_diputados.each do |diputado|
+        @diputados.push(diputado) if diputado.sexo == params[:sexo]
+      end
+    end 
+  end
+
+
+
+  def busqueda_proyectos
+    @total_diputados = Diputado.all
+    @diputados = Array.new
+
+    if params[:sexo] == ""
+      @diputados = @total_diputados
+    else
+      @total_diputados.each do |diputado|
+        @diputados.push(diputado) if diputado.sexo == params[:sexo]
+      end
+    end 
+  end 
+
+
 
   def preguntas_diputado
     diputado = Diputado.find_by email: params[:email]
