@@ -63,7 +63,7 @@ class Api::AsambleaController < ApplicationController
 
   
   def busqueda_asistencias
-    @total_diputados = Diputado.all
+    @total_diputados = Diputado.find(:all, :order => "cantidad_asistencias desc")
     @diputados = Array.new
 
     if params[:sexo] == ""
@@ -78,7 +78,7 @@ class Api::AsambleaController < ApplicationController
 
 
   def busqueda_proyectos
-    @total_diputados = Diputado.all
+    @total_diputados = Diputado.find(:all, :order => "cantidad_proyectos desc")
     @diputados = Array.new
 
     if params[:sexo] == ""
