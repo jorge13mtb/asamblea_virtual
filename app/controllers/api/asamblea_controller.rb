@@ -135,7 +135,7 @@ class Api::AsambleaController < ApplicationController
     diputado = Diputado.find_by email: params[:email_diputado]
 
     if diputado && usuario
-      pregunta = diputado.preguntas_diputados.build(pregunta: params[:pregunta], usuario_id: usuario.id)
+      pregunta = diputado.preguntas_diputados.build(pregunta: params[:pregunta], usuario_id: usuario.id, url_foto: params[:url_foto])
       @mensaje.respuesta = "Pregunta agregada correctamente" if pregunta.save 
     end
   end

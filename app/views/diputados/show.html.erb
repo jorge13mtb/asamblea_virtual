@@ -48,6 +48,7 @@
                     <% if pregunta.respuesta == "" or pregunta.respuesta.nil? %>
   
                       <tr>
+
                         <td>        
                          <%= form_tag('/responder?' +'id=' + @diputado.id.to_s + '&id_pregunta=' + pregunta.id.to_s) do  %>
 
@@ -59,6 +60,7 @@
 
                             <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control" %>
                         </td>
+
 
                         <td> </br></br></br>
                         <center>
