@@ -20,6 +20,8 @@ AsambleaVirtual::Application.routes.draw do
  
   match '/api/asamblea/busqueda_proyectos',        to: 'api/asamblea#busqueda_proyectos',        via: 'get'
   match '/api/asamblea/busqueda_asistencias',      to: 'api/asamblea#busqueda_asistencias',      via: 'get'
+
+  match '/api/asamblea/nombres_diputados',         to: 'api/asamblea#nombres_diputados',         via: 'get'
   
   match '/responder', to: 'diputados#responder', via: 'post'
 

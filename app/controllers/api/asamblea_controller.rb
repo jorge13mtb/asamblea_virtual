@@ -6,6 +6,12 @@ class Api::AsambleaController < ApplicationController
 
 
 
+  def nombres_diputados
+    @diputados = Diputado.all
+  end
+
+
+
   def crear_diputado
     @mensaje = Mensaje.new 
     @mensaje.respuesta = "No se pudo crear el diputado"
