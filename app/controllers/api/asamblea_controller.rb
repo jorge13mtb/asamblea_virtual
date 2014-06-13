@@ -123,6 +123,7 @@ class Api::AsambleaController < ApplicationController
     
     end
     @mensaje.respuesta = usuario.token_app_movil if usuario && usuario.token_app_movil != nil
+    @mensaje.nombre = usuario.nombre if usuario
   end
 
 
@@ -159,6 +160,7 @@ end
 
   # esta clase es para la respuesta del json
   class Mensaje
-    attr_accessor :respuesta 
+    attr_accessor :respuesta, :nombre
     @respuesta
+    @nombre
   end

@@ -1,1 +1,1 @@
-json.extract! @mensaje, :respuesta
+json.extract! @mensaje, :respuesta, :nombre
