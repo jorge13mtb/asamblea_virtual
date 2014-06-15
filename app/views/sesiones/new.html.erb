@@ -14,6 +14,7 @@
             <div class="navbar-header">
                 <ul class="nav navbar-nav navbar-left">
                   <% if !current_diputado.nil? %>
+                    <li> <img src="<%= current_diputado.UrlFoto %>" width="42" height="42" style="margin-top: 4px; border: 2px solid #f5f6f7; border-radius: 20px;"> </li>
                      <li><%= link_to current_diputado.nombre, diputado_path(current_diputado) %></li>
                   <% else %>
                     <li class="active"><%= link_to "Asamblea", root_path %></li>
@@ -81,5 +82,4 @@
 
 </section>
 </div>
-
 
