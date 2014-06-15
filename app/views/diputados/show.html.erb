@@ -58,20 +58,28 @@
                               Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %>
                                                       - (<%=time_ago_in_words(pregunta.created_at)%> ago)
                             </small></br> 
-
+                            
                             <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control" %> </br> 
                         </td>
 
-
-                        <td> </br></br>
+  
+                        <td>
                         <center>
+                          <a onClick="mostrar_foto(<%= pregunta.url_foto %>);">Ver Foto Adjunta</a> 
+                         </br></br>
                           <%= submit_tag "Responder", class: "btn btn-large btn-primary" %>
                           <% end %></br>
                         </center> 
                        </td> 
                      </tr>
                    <% end %>
-   
+
+
+          <div id="div_foto"  style="margin-left: 300px; position: fixed; display: none; background-color:#EEEEEE; width: 550px; height: 450px">
+             <a onClick="cerrar();" style="float: right;">- Cerrar - </a>  </br>
+             <img id="imagen" src="" width="500" height="400" style="margin-top: 10px; border: 2px solid #f5f6f7; border-radius: 20px;">
+          </div>
+
 
                  <% else %>
                     <% if !pregunta.respuesta == "" or !pregunta.respuesta.nil? %>
@@ -80,8 +88,21 @@
                             <small style="color:blue"> Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %>
                                                           - (<%=time_ago_in_words(pregunta.created_at)%> ago)
                             </small></br> 
-                            <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control", disabled: true%></br>
-                      </td> </tr>
+                            <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control", disabled: true%>
+                      </td>
+
+                       <td>
+                        <center></br> </br> 
+                           <a onClick="mostrar_foto(<%= pregunta.url_foto %>);">Ver Foto Adjunta</a>  
+                        </br></br>
+                        </center> 
+                       </td> 
+                    </tr>
+
+          <div id="div_foto"  style="margin-left: 300px; position: fixed; display: none; background-color:#EEEEEE; width: 550px; height: 450px">
+             <a onClick="cerrar();" style="float: right;">- Cerrar - </a>  </br>
+             <img id="imagen" src="" width="500" height="400" style="margin-top: 10px; border: 2px solid #f5f6f7; border-radius: 20px;">
+          </div>
                     <% end %>
 
 
@@ -95,3 +116,23 @@
       <% end %>
 
 </section>
+
+
+
+<script type="text/javascript">
+  function mostrar_foto(url)
+  {
+    document.getElementById("div_foto").style.display = "block";
+    document.getElementById("imagen").src = url;
+  }
+
+  function cerrar()
+  {
+    document.getElementById("div_foto").style.display = "none";
+  }
+</script>
+
+
+
+
+
