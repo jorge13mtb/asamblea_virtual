@@ -57,18 +57,18 @@
                             <small style="color:blue"> 
                               Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %>
                                                       - (<%=time_ago_in_words(pregunta.created_at)%> ago)
-                            </small></br> </br>
+                            </small></br> 
 
-                            <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control" %>
+                            <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control" %> </br> 
                         </td>
 
 
-                        <td> </br></br></br>
+                        <td> </br></br>
                         <center>
                           <%= submit_tag "Responder", class: "btn btn-large btn-primary" %>
                           <% end %></br>
-                        </center>
-                       </td>
+                        </center> 
+                       </td> 
                      </tr>
                    <% end %>
    
@@ -79,8 +79,8 @@
                             <%= pregunta.pregunta %>
                             <small style="color:blue"> Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %>
                                                           - (<%=time_ago_in_words(pregunta.created_at)%> ago)
-                            </small></br> </br>
-                            <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control", disabled: true%>
+                            </small></br> 
+                            <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control", disabled: true%></br>
                       </td> </tr>
                     <% end %>
 
