@@ -16,46 +16,75 @@
     </header><!--/header-->
 
 
-<p>.</p>
-<p>.</p>
-<p>.</p>
+</br>
+</br>
+</br>
+</br>
 
-
-<!--/header
-            <p>Nombre de Usuario: <%=@diputado.nombre%></p>
-            <p>Email: <%=@diputado.email%></p>
-            <p>Descripcion: <%=@diputado.descripcion%></p> -->
 
 <section id="help" class="container">
         <div class="panel panel-primary">
 
           <div class="panel-heading">
-            <h3 class="panel-title">Las preguntas que me han hecho (<%= @preguntas.count %>)</h3>
+            <h3 class="panel-title">
+              <div class="btn-group">
+                  <%= link_to " Sin Responder ", diputado_path(@diputado), class: "btn btn-default"%>
+                  <%= link_to " Respondidas", "/diputados/" + @diputado.id.to_s + "?tab=respondidas", class: "btn btn-default"%>     
+              </div>
+                <text style="float: right; margin-top: 10px;">Total de Preguntas (<%= @preguntas.count %>)<text>
+            </h3>
           </div>
 				
           <div class="panel-body">
 				
-            <div align="center" style="height: 430px; overflow: auto;">
-					
+            <div align="center">
+
               <table class="table table-striped">
       
                 <% if @diputado.preguntas_diputados.any? %>
-                <% @preguntas.each do |pregunta| %>
+                <%  @preguntas.each do |pregunta| %>
 
-                    <tr>
-                      <td>
-                          <%= pregunta.pregunta %>
-                          <small style="color:blue"> Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %> </small> </br> </br>
-                          <textarea class="form-control" cols=70 rows=3>Id de la pregunta: <%= pregunta.id %></textarea>  </br>
-                      </td>
+                   <% if @tab=="sin_responder" or @tab.nil? %>
+                    <% if pregunta.respuesta == "" or pregunta.respuesta.nil? %>
+  
+                      <tr>
 
-                      <td></br> </br></br>
-                        <center> 
-                          <button type="button" class="btn btn-large btn-primary">Responder</button> </br>
+                        <td>        
+                         <%= form_tag('/responder?' +'id=' + @diputado.id.to_s + '&id_pregunta=' + pregunta.id.to_s) do  %>
+
+                            <%= pregunta.pregunta %>
+                            <small style="color:blue"> 
+                              Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %>
+                                                      - (<%=time_ago_in_words(pregunta.created_at)%> ago)
+                            </small></br> </br>
+
+                            <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control" %>
+                        </td>
+
+
+                        <td> </br></br></br>
+                        <center>
+                          <%= submit_tag "Responder", class: "btn btn-large btn-primary" %>
+                          <% end %></br>
                         </center>
-                      </td>
-                   </tr>
+                       </td>
+                     </tr>
+                   <% end %>
+   
 
+                 <% else %>
+                    <% if !pregunta.respuesta == "" or !pregunta.respuesta.nil? %>
+                      <tr> <td>        
+                            <%= pregunta.pregunta %>
+                            <small style="color:blue"> Pregunta realizada por: <%= Usuario.find(pregunta.usuario_id).nombre %>
+                                                          - (<%=time_ago_in_words(pregunta.created_at)%> ago)
+                            </small></br> </br>
+                            <%= text_area_tag "respuesta", pregunta.respuesta, "cols"=>70, "rows"=>3, class: "form-control", disabled: true%>
+                      </td> </tr>
+                    <% end %>
+
+
+                 <% end %>
                 <%end %>
 
               </table>
