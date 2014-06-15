@@ -16,27 +16,32 @@ class Api::AsambleaController < ApplicationController
     @mensaje = Mensaje.new 
     @mensaje.respuesta = "No se pudo crear/actualizar el diputado"
 
-    diputado = Diputado.find_by email: params[:email]
-    if diputado
-        diputado.update_attribute :UrlFoto, params[:url_foto]
-        diputado.update_attribute :descripcion, params[:descripcion]
-       # diputado.update_attribute :Provincia, params[:descripcion]
-       # diputado.update_attribute :Partido, params[:partido]
-        diputado.update_attribute :cantidad_asistencias, params[:cantidad_asistencias]
-        diputado.update_attribute :cantidad_proyectos, params[:cantidad_proyectos]
-        diputado.update_attribute :texto_proyectos, params[:texto_proyectos]
-        diputado.update_attribute :texto_comisiones, params[:texto_comisiones]
-       # diputado.update_attribute :sexo, params[:sexo]
-    	@mensaje.respuesta = "Diputado Actualizado" # if diputado.save
-    else
-    	@diputado = Diputado.new(:nombre => params[:nombre], :email => params[:email], :password => params[:password],
-                             :password_confirmation => params[:password_confirmation], :UrlFoto => params[:url_foto],
-                             :descripcion => params[:descripcion], :Provincia => params[:provincia], :Partido => params[:partido],
-                             :cantidad_asistencias => params[:cantidad_asistencias], :cantidad_proyectos => params[:cantidad_proyectos],
-                             :texto_proyectos => params[:texto_proyectos], :texto_comisiones => params[:texto_comisiones],
-                             :sexo => params[:sexo])
+    if (params[:appkey].eql? app_key)
 
-    	@mensaje.respuesta = "Diputado creado" if @diputado.save
+        diputado = Diputado.find_by email: params[:email]
+        if diputado
+            diputado.update_attribute :UrlFoto, params[:url_foto]
+            diputado.update_attribute :descripcion, params[:descripcion]
+       	    diputado.update_attribute :cantidad_proyectos, params[:cantidad_proyectos]
+            diputado.update_attribute :texto_proyectos, params[:texto_proyectos]
+            diputado.update_attribute :texto_comisiones, params[:texto_comisiones]
+            #diputado.update_attribute :sexo, params[:sexo]
+            #diputado.update_attribute :Provincia, params[:descripcion]
+            #diputado.update_attribute :Partido, params[:partido]
+            diputado.update_attribute :cantidad_asistencias, params[:cantidad_asistencias]
+    	    @mensaje.respuesta = "Diputado Actualizado"
+        else
+    	    @diputado = Diputado.new(:nombre => params[:nombre], :email => params[:email], :password => params[:password],
+                               :password_confirmation => params[:password_confirmation], :UrlFoto => params[:url_foto],
+                               :descripcion => params[:descripcion], :Provincia => params[:provincia], :Partido => params[:partido],
+                               :cantidad_asistencias => params[:cantidad_asistencias], :cantidad_proyectos => params[:cantidad_proyectos],
+                               :texto_proyectos => params[:texto_proyectos], :texto_comisiones => params[:texto_comisiones],
+                               :sexo => params[:sexo])
+
+    	    @mensaje.respuesta = "Diputado creado" if @diputado.save
+        end
+    else
+        @mensaje.respuesta = "No tienes permiso para crear/actualizar diputados, revisa el app key"
     end
   end
 
@@ -173,6 +178,14 @@ class Api::AsambleaController < ApplicationController
         @preguntas.push(pregunta) if usuario.id == pregunta.usuario_id
       end
     end
+  end
+
+
+
+  private
+
+  def app_key
+    "1405ee0b5234c53980d46d493ae2a0cb"
   end
 
 end
