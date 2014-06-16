@@ -65,7 +65,7 @@
   
                         <td>
                         <center>
-                          <a onClick="mostrar_foto(<%= pregunta.url_foto %>);">Ver Foto Adjunta</a> 
+                          <a onClick="mostrar_foto('<%= pregunta.url_foto %>');">Ver Foto Adjunta</a> 
                          </br></br>
                           <%= submit_tag "Responder", class: "btn btn-large btn-primary" %>
                           <% end %></br>
@@ -131,7 +131,6 @@
     document.getElementById("div_foto").style.display = "none";
   }
 </script>
-
 
 
 
